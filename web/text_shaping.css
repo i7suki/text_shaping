@@ -1,0 +1,80 @@
+html {
+	width: 100%;
+	height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    padding:0;
+    margin: min(1%, 10pt);
+	flex-grow: 1;
+	background:#00DCFF
+}
+
+body div{
+	width: 100%;
+	height:calc(100% / 3);
+	display: flex;
+    flex-direction: column;
+}
+
+body div p{
+	user-select: none;
+}
+
+textarea {
+	resize: none;
+    padding: min(1%, 2.5px) min(1%, 5px);
+    margin:0;
+	flex-grow: 1;
+	background:#ccffff
+}
+
+p {
+	margin:0;
+}
+
+.area {
+	width: 100%;
+	margin: 0;
+	flex-wrap: wrap;
+	display: flex;
+}
+
+.tab_class {
+	width: calc(100%/1);
+	height: 50px;
+	background-color: darkgrey;
+	line-height: 50px;
+	font-size: 15px;
+	text-align: center;
+	display: block;
+	float: left;
+	order: -1;
+}
+
+input[name="tab_name"] {
+display: none;
+}
+
+input:checked + .tab_class {
+background-color: cadetblue;
+color: aliceblue;
+}
+
+.content_class {
+display: none;
+width: 100%;
+}
+
+input:checked + .tab_class + .content_class {
+display: block;
+}
+
+output{
+  vertical-align: middle;
+  width: 100%;
+  border: 1px solid #000000;
+  background-color: #00bfff;
+}

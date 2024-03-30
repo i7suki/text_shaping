@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript" src="text_shaping.js"></script>
+        <link rel="stylesheet" href="text_shaping.css">
+        <title>text_shaping</title>
+    </head>
+    <body>
+		<div>
+			<p>
+				Input
+				<input type="button" value="Clear" onclick="clear_text()"/>
+			</p>
+			<textarea id="text_before" name="comment" placeholder="Paste the text to be formatted here" oninput="document.getElementById('reprace_check').checked?reprace_math_typeset('text_after'):process()"></textarea>
+		</div>
+		<div>
+			<p>
+				Output
+				<input type="button" value="Copy" onclick="copy_text('text_after')"/>
+				<input type="button" value="Google trans" onclick="open_translator('googletrans')" id="googletrans_button"/>
+				<input type="button" value="DeepL" onclick="open_translator('deepl')" id="deepl_button"/>
+				<label><input id="reprace_check" type="checkbox" onchange="this.checked?reprace_math_typeset('text_after'):process()" checked>Reprace mathematical typesetting</label>
+			</p>
+			<textarea id="text_after" name="comment"></textarea>
+		</div>
+		<div>
+			<p>
+				Translated
+				<input type="button" value="Copy" onclick="copy_text('text_translated')"/>
+			</p>
+			<textarea id="text_translated" name="comment" placeholder="Paste the translated text here" oninput="restore_math_typeset()"></textarea>
+		</div>
+    </body>
+</html>
