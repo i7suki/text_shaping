@@ -19,7 +19,7 @@ def open_translator(translator, text_en):
 		"googletrans":"translate.google.co.jp",
 		"deepl":"www.deepl.com/translator",
 	}
-	exst_en_quote = urllib.parse.quote(text_en)
+	exst_en_quote = urllib.parse.quote(text_en.replace("/", "\/"))
 	url = "https://"+translator_url[translator]+"/#en/ja/"+exst_en_quote
 	webbrowser.open(url, new=1, autoraise=True)
 	return
