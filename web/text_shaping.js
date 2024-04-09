@@ -1,5 +1,4 @@
 function copy_text(id){
-    // let text = document.getElementById("custom_output").value;
     navigator.clipboard.writeText(document.getElementById(id).value);
 }
 
@@ -9,60 +8,31 @@ function clear_text(){
 	document.getElementById("text_translated").value = ""
 }
 
-function process(){
-    async function run() {
-		let text = await eel.process(document.getElementById("text_before").value)();
-		document.getElementById("text_after").value = text;
+async function process(reprace_math_typeset=false){
+    // async function run() {
+	let text = await eel.process(document.getElementById("text_before").value)();
+	if(reprace_math_typeset){
+		let matchtext_arr = await eel.extraction_math_typeset(text)();
+		text = await eel.reprace_math_typeset(text, matchtext_arr)();
 	}
-	run();
+	document.getElementById("text_after").value = text;
+	// }
+	// run();
 }
 
-function open_translator(translator){
-    async function run(){
-		await eel.open_translator(translator, document.getElementById("text_after").value)();
-	}
-	run();
-}
-
-// function reprace_math_typeset(is_checked){
-// 	if(is_checked){
-// 		process();
-// 		async function run() {
-// 			let text = await eel.reprace_math_typeset(document.getElementById("text_after").value)();
-// 			document.getElementById("text_after").value = text;
-// 		}
-// 		run();
-// 	}
-// 	else{
-// 		process();
-// 	}
-// }
-
-// function extraction_math_typeset(){
-// 	async function run() {
-// 		let matchtext_arr = await eel.reprace_math_typeset(document.getElementById("text_before").value)();
-// 		return matchtext_arr
-// 	}
-// 	return run();
-// }
-
-
-function reprace_math_typeset(textarea_id){
-	async function run(){
-		process()
-		let textarea_element = document.getElementById(textarea_id)
-		let matchtext_arr = await eel.extraction_math_typeset(document.getElementById("text_before").value)();
-		textarea_element.value = await eel.reprace_math_typeset(textarea_element.value, matchtext_arr)();
-	}
-	run();
+async function open_translator(translator){
+    // async function run(){
+	await eel.open_translator(translator, document.getElementById("text_after").value)();
+	// }
+	// run();
 }
 
 
-function restore_math_typeset(){
-	async function run(){
-		let textarea_element = document.getElementById("text_translated")
-		let matchtext_arr = await eel.extraction_math_typeset(document.getElementById("text_before").value)();
-		textarea_element.value = await eel.restore_math_typeset(textarea_element.value, matchtext_arr)();
-	}
-	run();
+async function restore_math_typeset(){
+	// async function run(){
+	let textarea_element = document.getElementById("text_translated")
+	let matchtext_arr = await eel.extraction_math_typeset(document.getElementById("text_before").value)();
+	textarea_element.value = await eel.restore_math_typeset(textarea_element.value, matchtext_arr)();
+	// }
+	// run();
 }

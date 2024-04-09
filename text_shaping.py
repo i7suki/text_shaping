@@ -10,7 +10,7 @@ def process(text):
 	text = re.sub("-\n", "", text)
 	text = re.sub("\.\s*([A-Z])", ".\n\\1", text)
 	text = re.sub("([^.:;])\n", "\\1 ", text)
-	return text, 
+	return text
 
 
 @eel.expose

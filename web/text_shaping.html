@@ -14,7 +14,7 @@
 				Input
 				<input type="button" value="Clear" onclick="clear_text()"/>
 			</p>
-			<textarea id="text_before" name="comment" placeholder="Paste the text to be formatted here" oninput="document.getElementById('reprace_check').checked?reprace_math_typeset('text_after'):process()"></textarea>
+			<textarea id="text_before" name="comment" placeholder="Paste the text to be formatted here" oninput="process(document.getElementById('reprace_check').checked)"></textarea>
 		</div>
 		<div>
 			<p>
@@ -22,7 +22,7 @@
 				<input type="button" value="Copy" onclick="copy_text('text_after')"/>
 				<input type="button" value="Google trans" onclick="open_translator('googletrans')" id="googletrans_button"/>
 				<input type="button" value="DeepL" onclick="open_translator('deepl')" id="deepl_button"/>
-				<label><input id="reprace_check" type="checkbox" onchange="this.checked?reprace_math_typeset('text_after'):process()" checked>Reprace mathematical typesetting</label>
+				<label><input id="reprace_check" type="checkbox" onchange="process(this.checked)" checked>Reprace mathematical typesetting</label>
 			</p>
 			<textarea id="text_after" name="comment"></textarea>
 		</div>
