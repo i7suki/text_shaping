@@ -38,6 +38,7 @@ def restore_math_typeset(text, math_text_arr):
 	num_len = len(str(len(math_text_arr)))
 	for i, s in enumerate(math_text_arr):
 		text = text.replace("#"+str(i).zfill(num_len), s, 1)
+		text = text.replace("＃"+str(i).zfill(num_len), s, 1)
 	return text
 
 
